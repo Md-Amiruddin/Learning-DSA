@@ -327,20 +327,17 @@ Node *mergeLists(Node *head1, Node *head2)
             }
             ptr = ptr->next;
         }
-        else if (head1 != NULL)
+        else if (head1 == NULL)
         {
-            ptr->next = head1;
-            head1 = head1->next;
-            ptr = ptr->next;
+            ptr->next = head2;
+            break;
         }
         else
         {
-            ptr->next = head2;
-            head2 = head2->next;
-            ptr = ptr->next;
+            ptr->next = head1;
+            break;
         }
     }
-    ptr->next = NULL;
     Node *toDelete = dummyNodeHead;
     dummyNodeHead = dummyNodeHead->next;
     delete toDelete;
@@ -451,7 +448,7 @@ int main()
     cout << "Intersection: " << getIntersection(head, a1);
 
     cout << "\n";
-    Node *mergedListHead = mergeListRecursive(a1, n1);
+    Node *mergedListHead = mergeLists(a1, n1);
     printList(mergedListHead);
     return 0;
 }
