@@ -3,6 +3,9 @@ using namespace std;
 
 void insert(vector<int> &heap, int value)
 {
+    if(heap.empty()){
+        heap.push_back(-1);
+    }
     heap.push_back(value);
     int i = heap.size() - 1;
     int parent;
